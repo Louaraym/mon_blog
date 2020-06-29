@@ -3,11 +3,14 @@
 {% block body %}
     <article>
         <h2>{{article.title}}</h2>
-        <div class="metadata">Ecrit le {{article.createdAt | date('d/m/y')}}
-            à {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}} </div>
+        <div class="metadata">
+            Ecrit le {{article.createdAt | date('d/m/y')}}
+            à {{article.createdAt | date('H:i')}} dans la catégorie {{article.category.title}}
+        </div>
         <div class="content">
             <img src="{{article.image}}" alt="">
             {{article.content | raw}}
+        </div>
     </article>
     <section id="commentaires">
         <h1>{{ article.comments | length }} commentaires</h1>

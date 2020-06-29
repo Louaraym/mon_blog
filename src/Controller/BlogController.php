@@ -7,7 +7,7 @@ use App\Entity\Comment;
 use App\Form\ArticleType;
 use App\Form\CommentType;
 use App\Repository\ArticleRepository;
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -45,11 +45,11 @@ class BlogController extends AbstractController
      * @Route("/blog/{id}/edit", name="blog_edit")
      * @param Article $article
      * @param Request $request
-     * @param ObjectManager $manager
+     * @param EntityManagerInterface $manager
      * @return RedirectResponse|Response
      * @throws Exception
      */
-    public function form(Article $article = null, Request $request, objectManager $manager){
+    public function form(Article $article = null, Request $request, EntityManagerInterface $manager){
 
         if (!$article){
             $article = new Article();
@@ -81,11 +81,11 @@ class BlogController extends AbstractController
      * @Route("/blog/{id}", name="blog_show")
      * @param Article $article
      * @param Request $request
-     * @param ObjectManager $manager
+     * @param EntityManagerInterface $manager
      * @return Response
      * @throws Exception
      */
-    public function show(Article $article, Request $request, objectManager $manager): Response
+    public function show(Article $article, Request $request,EntityManagerInterface $manager): Response
     {
         $comment = new Comment();
 

@@ -22,8 +22,8 @@ class ArticleFixtures extends Fixture
 
             $manager->persist($category);
 
-            //Créer entre 4 et 6 articles
-            for($j = 1; $j <= mt_rand(4, 6); $j++){
+            //Créer entre 10 et 16 articles
+            for($j = 1, $jMax = random_int(10, 16); $j <= $jMax; $j++){
                 $article = new Article();
                 $content = '<p>' . join ($faker->paragraphs(5), '</p><p>') . '</p>';
                 $article->setTitle($faker->sentence())
@@ -35,7 +35,7 @@ class ArticleFixtures extends Fixture
                 $manager->persist($article);
 
                 //On donne des commentaires à l'article
-                for($k = 1; $k <= mt_rand(4, 10); $k++){
+                for($k = 1, $kMax = random_int(4, 10); $k <= $kMax; $k++){
                     $comment = new Comment();
 
                     $content = '<p>' . join ($faker->paragraphs(2), '</p><p>') . '</p>';
